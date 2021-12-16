@@ -18,7 +18,7 @@ def sentence_to_words(lineset):
         word = ''
         flag = True
         for char in sentence:
-            if char == ' ':
+            if char < 'A' or char > 'z' or (char < 'a' and char > 'Z'):
                 if flag == True:
                     words.append(word)
                     word = ''
