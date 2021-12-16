@@ -17,8 +17,10 @@ def sentence_to_words(lineset):
         x = 0
         y = 0
         result = []
+        flag = False
         for i in sentence:
             if i == ' ' or i == ',' or i == '.' or i == '、':
+                flag = True
                 if x != 0:  # 第二格单词前面存在空格需往后移一格，剔除空格
                     q = sentence[x + 1:y:1]
                     x = y  # 记录位置，从x处继续提取
@@ -28,7 +30,7 @@ def sentence_to_words(lineset):
                     x = y
                     result.append(q)
             if y == len(sentence) - 1:  # 用于提取最后一个单词
-                q = sentence[x + 1:y + 1:1]
+                q = sentence[x + flag:y + 1:1]
                 result.append(q)
             y = y + 1
         for i in result:
