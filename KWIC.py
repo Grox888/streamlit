@@ -27,7 +27,7 @@ def sentence_to_words(lineset):
                 flag = True
                 word += char
         words.append(word)
-        if '' in words:
+        while '' in words:
             words.remove('')
         words_set.append(words)
     return words_set
